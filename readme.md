@@ -1,20 +1,35 @@
 #ReactJS
 
-## Learning Objectives
+<!--
+Creator: Ilias
+Market: SF
+-->
 
-* Explain what ReactJS is.
-* Explain what a component is.
-* Create and render React components in the browser.
-* Nest & embed React components.
-* Modify the state of a React component through events.
+![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
 
-## What is ReactJS?
+# Workshop Title
 
-* React is a library that Facebook invented to help us build web components.
-* You can think of React as being similar to directives in Angular.
-* It is concerned only with the **V** in **MVC** and as a result can be used in conjunction with other libraries.
+### Why is this important?
+<!-- framing the "why" in big-picture/real world examples -->
+*This workshop is important because:*
 
-###Directly from the Docs
+React is a library that Facebook invented to help build custom HTML elements. React provides a declarative library that keeps the DOM (the view) in sync with your data (the model). It is concerned only with the **V** in **MVC** and as a result can be used in conjunction with other libraries to help manage state.
+
+### What are the objectives?
+<!-- specific/measurable goal for students to achieve -->
+*After this workshop, developers will be able to:*
+
+* Create and render React components in the browser
+* Nest & embed React components
+* Modify the state of a React component through events
+
+### Where should we be now?
+<!-- call out the skills that are prerequisites -->
+*Before this workshop, developers should already be able to:*
+
+* Write client-side applications in JavaScript
+
+##From Docs
 
 >We built React to solve one problem: **building large applications with data that changes over time**.
 
@@ -22,7 +37,7 @@
 
 >In fact, with React the only thing you do is build components. Since they're so encapsulated, components make code reuse, testing, and separation of concerns easy.
 
-###What is JSX?
+##JSX
 
 JSX is a JavaScript syntax extension that looks similar to XML that helps represent DOM elements in JavaScript.
 
@@ -44,7 +59,7 @@ var app = React.createElement(
 );
 ```
 
-##Setup
+## Setup
 
 ###JSX Syntax in Sublime
 
