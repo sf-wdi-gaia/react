@@ -45,7 +45,7 @@ JSX is a JavaScript syntax extension that looks similar to XML that helps repres
 var myElement = <MyComponent someProperty={true}/>;
 ```
 
-Here's an example of how JSX gets translated into regular JS.
+Here's an example of JSX, don't worry about understanding it just yet.
 
 ```js
 var Nav, Profile;
