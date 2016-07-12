@@ -181,7 +181,7 @@ export default class HelloWorld extends React.Component {
 ```js
 // render it by passing in a `name` prop
 ReactDOM.render(
-  <HelloWorld name="WDI 26"/>,
+  <HelloWorld name="WDI"/>,
   document.getElementById("hello-world-component")
 )
 ```
@@ -212,7 +212,7 @@ export default class HelloWorld extends React.Component {
 
 ```js
 ReactDOM.render(
-  <HelloWorld name="WDI 26" mood="loving life"/>,
+  <HelloWorld name="WDI" mood="loving life"/>,
   document.getElementById("hello-world-component")
 )
 ```
@@ -312,20 +312,7 @@ class ProfilePic extends React.Component {
 
 Let's practice what we've learned so far by building a `Post` component for our blog.
 
-* Define a Post constructor that has the following properties:
-  1. title
-  2. author
-  3. body
-* Render these properties using a React Post component.
-* The HTML/CSS composition of your Post is up to you.
-
-```js
-const myPost = {
-  title: "My First Post",
-  author: "Mr Cat",
-  body: "Check it out. This is the first post on my dope blog!"
-}
-```
+Make and render a custom `<Post/>` component with the attributes `title`, `author`, and `body`. The exact HTML/CSS composition of the component is up to you.
 
 <details>
 <summary>Example solution</summary>
@@ -347,9 +334,9 @@ class Post extends React.Component {
 ```js
 ReactDOM.render(
   <Post
-    title={myPost.title}
-    author={myPost.author}
-    body={myPost.body}
+    title={"Are you feline me?"}
+    author={"Kitkat the Cat"}
+    body={"Cause I'm purrfect"}
   />,
   document.getElementById("blog-component")
 )
@@ -357,21 +344,22 @@ ReactDOM.render(
 
 </details>
 
-**Bonus**: Add an array of comments to your post and figure out how to render it. You can assume you data looks like this:
+What if we wanted to add an array of comments to the post?
 
 ```js
-const myPost = {
-  title: "My First Post",
-  author: "Mr Cat",
-  body: "Check it out. This is the first post on my dope blog!",
-  comments: ["First!", "Second!", "This blog needs more GIFs."]
-}
+ReactDOM.render(
+  <Post
+    title={"Are you feline me?"}
+    author={"Kitkat the Cat"}
+    body={"Cause I'm purrfect"}
+    comments={["first!", "more gifs plz", "i haz had enuf ov dis >_<"]}
+  />,
+  document.getElementById("blog-component")
+)
 ```
 
->Note: There are new `let` and `const` keywords in ES6 to [declare variables](https://medium.com/javascript-scene/javascript-es6-var-let-or-const-ba58b8dcde75#.grg557q5o). Basically always use `const` unless you know the data stored in that variable is definitely going to change during your program. A good example of when to use `let` would inside of a `for` loop to keep track of `i`, the iterator, i.e. `let i = 0;`. Favor each of the other options over `var`.
-
 <details>
-<summary>Example solution</summary>
+<summary>Let's try map!</summary>
 
 ```js
 class Post extends React.Component {
@@ -393,7 +381,7 @@ class Post extends React.Component {
 }
 ```
 
->Note: when you are iterating through a collection React always want you to put a `key` on each item with a unique index for that collection. `.map`'s second argument to it's callback is the index, so that works just fine. However, the actual unique database id on each comment would theoretically work great too.
+>Note: when iterating through a collection, React needs to put a `key` on each item with a unique index for that collection (otherwise an errors will appear). `.map`'s second argument to it's callback is the (unique) index, so that works just fine. However, the actual unique database id on each comment would be better.
 
 ```js
 ReactDOM.render(
@@ -411,11 +399,9 @@ ReactDOM.render(
 
 ### Embedded Components
 
-What problems did you encounter when trying to add multiple comments to your Post?
-
 * What if there was a comment component we could abstract some of this logic to?
 
-* Let's reference a comment using a embedded `<Comment/>` component inside of PostView's render method.
+* Let's reference a comment using an embedded `<Comment/>` component inside of PostView's render method.
 
 ### Challenge: Add Embedded Comments To Blog
 
@@ -462,12 +448,12 @@ class Comment extends React.Component {
 We already went over properties.
 
 * The thing about props is that they can only be changed by a parent.
-* So, what do we do if our component needs to update it's parent or the application as a whole? That's where **state** comes in.
-* State is similar to props, but is meant to be changed and can therefore update the props of children components.
-* Like properties, we can access state values using `this.state.val`
-* State is good when the applications needs to "respond to user input, a server request, or the passage of time"
+* So, what do we do if our component needs to tigger an update it's parent or the application as a whole? That's where **state** comes in.
+* State is similar to props, but is *meant to be changed*.
+* Like properties, we can access state values using `this.state.val`.
+* State is good when the applications needs to "respond to user input, a server request, or the passage of time" (all events).
 * Setting up and modifying state is not as straightforward as properties and instead requires multiple methods.
-* More on what [should & shouldn't go in state](http://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#what-should-go-in-state)
+* More on what [should & shouldn't go in state](http://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#what-should-go-in-state).
 
 Let's modify our earlier `HelloWorld` example to be a new `MoodTracker` component. There will be a mood displayed and  eventually a user will click a button to indicate on a scale of 1-10 how much of that mood they are feeling.
 
@@ -491,14 +477,13 @@ const MoodTracker = React.createClass({
 })
 ```
 
-Next we need to enable the user to change the state of our component. Let's create an `onClick` event that triggers a method `increaseMood` to increment our counter by 1 for each click. Notice that it is important to use the [`.setState`](https://facebook.github.io/react/docs/component-api.html#setstate) method to update the state.
+Next we need to enable the user to change the state of our component. Let's create an `onClick` event that triggers a method `increaseMood` to increment our counter by 1 for each click. Notice that it is important to use the [`.setState`](https://facebook.github.io/react/docs/component-api.html#setstate) method to update the state. Also, we can define the initial state with `getInitialState` a reserved method in React.
 
 ```js
 const MoodTracker = React.createClass({
   getInitialState() {
     return {points: 1}
   },
-
   increaseMood() {
     this.setState({
       points: this.state.points + 1
@@ -526,7 +511,7 @@ Whenever we run `.setState`, our component runs a **diff** between the current D
   * We **do not** re-render the entire component like we have been in class.
   * This is one of React's core advantages
 
-###Challenge: Count to 10
+### Challenge: Count to 10
 
 After 10 clicks, the user should see the counter reset to 1.
 
@@ -538,7 +523,6 @@ const MoodTracker = React.createClass({
   getInitialState() {
     return {points: 1}
   },
-
   increaseMood() {
     let newPoints = this.state.points >= 10 ? 1 : this.state.points + 1
     this.setState({
@@ -561,7 +545,7 @@ const MoodTracker = React.createClass({
 
 </details>
 
-## Exercise: Implement State
+## Challenge: I Like!
 
 Let's create a state for our earlier blog example. We want to be able to edit the body of our post. Tip: update the component to the `React.createClass` syntax.
 

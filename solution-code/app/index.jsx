@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom'
 import Post from './components/post'
 import ProfilePic from './components/profile-pic'
 import myPostData from './data/myPost'
-// import moodTracker
 
 ReactDOM.render(
   <Post
