@@ -26,6 +26,7 @@ React is a library that Facebook invented to help build custom HTML elements. Re
 *Before this workshop, developers should already be able to:*
 
 * Write client-side applications in JavaScript
+* Knowledge of Gulp as a build tool
 
 ##From Docs
 
