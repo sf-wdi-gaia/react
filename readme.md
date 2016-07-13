@@ -456,7 +456,7 @@ We already went over properties.
 
 Let's modify our earlier `HelloWorld` example to be a new `MoodTracker` component. There will be a mood displayed and  eventually a user will click a button to indicate on a scale of 1-10 how much of that mood they are feeling.
 
-Let's use React's `.createClass` method as opposed to extending standard ES6 classes, as it makes some of this behavior more straightforward.
+Now, let's instead use React's `.createClass` method as opposed to extending standard ES6 classes, as it makes some of this behavior more straightforward.
 
 ```js
 const MoodTracker = React.createClass({
